@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+
+
+/* gallery image */
+.gallery-image {
+  width: auto;
+  height: auto;
+  max-height: 100vh;
+  position: 0;
+  transform: scale(2.5); }
+
+  .gallery-image-wrapper {
+    height: 100vh;
+    overflow: hidden;
+  }

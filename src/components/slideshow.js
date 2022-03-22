@@ -1,10 +1,33 @@
-import React from 'react'
+import React , {useState, useEffect} from 'react'
+import { StaticImage } from "gatsby-plugin-image"
+import Estorme from "../images/gallery/estorme.jpg"
 
-export default function slideshow(imgData) {
-  console.log("imgData: ", imgData)
+export default function Slideshow(imgData) {
+  //https://stackoverflow.com/questions/65840192/loop-through-an-array-and-show-single-item-at-a-time-with-dynamic-time-duration
+  const items = [{ name: "bottom left" }, { name: "bottom right" }, { name: "top left" }];
+  const [mediaItem, setMediaItem] = useState(items[0]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timerId = setInterval(
+      () => setIndex((i) => (i + 1) % items.length),
+      1000
+    );
+    return () => clearInterval(timerId);
+  }, []);
+
+  useEffect(() => {
+    setMediaItem(items[index]);
+  }, [index]);
+
   return (
     <>
-    <div>slideshow</div>
+      {console.log(mediaItem.name)}
+      {/* <h1 style={{color: mediaItem.name, fontSize: "1rem"}}>Test</h1> */}
+      {/* <StaticImage className="gallery-image" imgStyle={{transformOrigin: mediaItem.name }} src="../images/gallery/estorme.jpg" alt="art" /> */}
+     <div className='gallery-image-wrapper'>
+        <img className="gallery-image" style={{transformOrigin: mediaItem.name }} src={Estorme} alt="art" />
+      </div>
     </>
   )
 }

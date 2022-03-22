@@ -8,7 +8,7 @@ const side = {
   position: "absolute",
   height: "100vh",
   position: "fixed",
-  width: "2rem",
+  width: "1rem",
   top: 0,
   padding: "1rem",
   left: "0"
